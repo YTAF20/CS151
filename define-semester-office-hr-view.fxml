@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+
+<?import javafx.scene.layout.HBox?>
+<VBox spacing="10" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="s25.cs151.application.DefineOfficeHrController">
+
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <Label text="Semester:"/>
+    <ComboBox fx:id="semesterDropdown"/>
+
+    <Label text="Year:"/>
+    <TextField fx:id="yearField" promptText="e.g., 2025"/>
+
+    <Label text="Office Days:"/>
+    <VBox spacing="5">
+        <CheckBox fx:id="mondayCheck" text="Monday"/>
+        <CheckBox fx:id="tuesdayCheck" text="Tuesday"/>
+        <CheckBox fx:id="wednesdayCheck" text="Wednesday"/>
+        <CheckBox fx:id="thursdayCheck" text="Thursday"/>
+        <CheckBox fx:id="fridayCheck" text="Friday"/>
+    </VBox>
+
+    <HBox spacing="10">
+        <Button fx:id="saveButton" text="Save" onAction="#onSave"/>
+        <Button fx:id="cancelButton" text="Cancel" onAction="#onCancel"/>
+    </HBox>
+
+</VBox>
