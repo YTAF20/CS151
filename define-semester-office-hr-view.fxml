@@ -1,35 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<!-- Import required JavaFX layout and control components -->
 <?import javafx.scene.layout.VBox?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
-
 <?import javafx.scene.layout.HBox?>
-<VBox spacing="10" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="s25.cs151.application.DefineOfficeHrController">
 
+<!-- Main container: Vertical box with 10px spacing between elements -->
+<VBox spacing="10" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="s25.cs151.application.DefineOfficeHrController">    <!-- Links to the controller class -->
+
+    <!-- Sets 20px padding on all sides of the form -->
     <padding>
         <Insets top="20" right="20" bottom="20" left="20"/>
     </padding>
 
-    <Label text="Semester:"/>
-    <ComboBox fx:id="semesterDropdown"/>
+    <!-- Semester selection dropdown section -->
+    <Label text="Semester:"/>    <!-- Label for semester field -->
+    <ComboBox fx:id="semesterDropdown"/>    <!-- Dropdown menu for semester selection -->
 
-    <Label text="Year:"/>
-    <TextField fx:id="yearField" promptText="e.g., 2025"/>
+    <!-- Year input section -->
+    <Label text="Year:"/>    <!-- Label for year field -->
+    <TextField fx:id="yearField" promptText="e.g., 2025"/>    <!-- Text input for year with placeholder -->
 
-    <Label text="Office Days:"/>
-    <VBox spacing="5">
-        <CheckBox fx:id="mondayCheck" text="Monday"/>
-        <CheckBox fx:id="tuesdayCheck" text="Tuesday"/>
-        <CheckBox fx:id="wednesdayCheck" text="Wednesday"/>
-        <CheckBox fx:id="thursdayCheck" text="Thursday"/>
-        <CheckBox fx:id="fridayCheck" text="Friday"/>
+    <!-- Weekday selection section -->
+    <Label text="Office Days:"/>    <!-- Label for office days section -->
+    <VBox spacing="5">    <!-- Vertical container for checkboxes with 5px spacing -->
+        <CheckBox fx:id="mondayCheck" text="Monday"/>         
+        <CheckBox fx:id="tuesdayCheck" text="Tuesday"/>       
+        <CheckBox fx:id="wednesdayCheck" text="Wednesday"/>   
+        <CheckBox fx:id="thursdayCheck" text="Thursday"/>     
+        <CheckBox fx:id="fridayCheck" text="Friday"/>         
     </VBox>
 
-    <HBox spacing="10">
-        <Button fx:id="saveButton" text="Save" onAction="#onSave"/>
-        <Button fx:id="cancelButton" text="Cancel" onAction="#onCancel"/>
+    <!-- Action buttons section -->
+    <HBox spacing="10">    <!-- Horizontal container for buttons with 10px spacing -->
+        <Button fx:id="saveButton" text="Save" onAction="#onSave"/>      <!-- Save button that calls onSave method -->
+        <Button fx:id="cancelButton" text="Cancel" onAction="#onCancel"/>    <!-- Cancel button that calls onCancel method -->
     </HBox>
 
 </VBox>
