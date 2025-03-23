@@ -6,6 +6,7 @@ import javafx.stage.Stage;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.cell.PropertyValueFactory;
+import java.util.*;
 
 public class ViewOfficeHoursController {
     @FXML
@@ -23,6 +24,14 @@ public class ViewOfficeHoursController {
     @FXML
     private Button closeButton;
 
+    // Define semester order
+    private static final Map<String, Integer> SEMESTER_ORDER = new HashMap<>() {{
+        put("Spring", 0);
+        put("Summer", 1);
+        put("Fall", 2);
+        put("Winter", 3);
+    }};
+
     @FXML
     private void initialize() {
         // Configure table columns
@@ -30,7 +39,7 @@ public class ViewOfficeHoursController {
         yearColumn.setCellValueFactory(new PropertyValueFactory<>("year"));
         daysColumn.setCellValueFactory(new PropertyValueFactory<>("days"));
 
-        // Load and display data
+        // Load and display sorted data
         loadOfficeHours();
     }
 
@@ -44,8 +53,21 @@ public class ViewOfficeHoursController {
         for (SemesterOfficeHours hour : savedHours) {
             tableData.add(new OfficeHourRow(hour));
         }
+
+        // Sort the data
+        tableData.sort((row1, row2) -> {
+            // First, compare by year (descending)
+            int yearCompare = row2.getYear().compareTo(row1.getYear());
+            if (yearCompare != 0) return yearCompare;
+
+            // Then, compare by semester
+            return Integer.compare(
+                SEMESTER_ORDER.get(row1.getSemester()),
+                SEMESTER_ORDER.get(row2.getSemester())
+            );
+        });
         
-        // Set the table data
+        // Set the sorted data to the table
         officeHoursTable.setItems(tableData);
     }
 
