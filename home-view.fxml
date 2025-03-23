@@ -20,10 +20,13 @@
     </padding>
 
     <!-- Label element with fx:id for reference in the controller -->
-    <Label fx:id="welcomeText"/>
+    <Label fx:id="welcomeText" text="Office Hours Management System"/>
     
     <!-- Button element with:
          - Display text
          - onAction event handler that calls MainController.onButtonClick() -->
-    <Button text="Define Semester's Office Hours!" onAction="#onButtonClick"/>
+    <VBox spacing="10" alignment="CENTER">
+        <Button text="Define Semester's Office Hours" onAction="#onButtonClick"/>
+        <Button text="View Office Hours" onAction="#onViewButtonClick"/>
+    </VBox>
 </VBox>

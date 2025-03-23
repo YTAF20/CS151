@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import javafx.stage.Modality;
 
 import java.io.IOException;
 
@@ -23,16 +24,32 @@ public class MainController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("define-semester-office-hr-view.fxml"));
             Parent root = loader.load();
 
-            // Get the current window (Stage) from any UI element (using welcomeText)
-            Stage stage = (Stage) welcomeText.getScene().getWindow();
-            
-            // Create a new scene with the loaded FXML content and set dimensions
-            Scene scene = new Scene(root, 400, 350);
-            
-            // Update the window with the new scene
-            stage.setScene(scene);
+            // Create a new stage (window) for the form
+            Stage formStage = new Stage();
+            formStage.initModality(Modality.APPLICATION_MODAL); // Make it modal
+            formStage.setTitle("Define Semester's Office Hours");
+            formStage.setScene(new Scene(root, 400, 350));
+            formStage.show();
         } catch (IOException e) {
             // Print stack trace if there's an error loading the FXML file
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    protected void onViewButtonClick() {
+        try {
+            // Load the view office hours FXML
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("view-office-hours.fxml"));
+            Parent root = loader.load();
+
+            // Create new stage for the view
+            Stage viewStage = new Stage();
+            viewStage.initModality(Modality.APPLICATION_MODAL); // Make it modal
+            viewStage.setTitle("View Office Hours");
+            viewStage.setScene(new Scene(root, 600, 400));
+            viewStage.show();
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

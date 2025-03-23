@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="10" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="s25.cs151.application.ViewOfficeHoursController">
+    
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <!-- TableView to display office hours -->
+    <TableView fx:id="officeHoursTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="semesterColumn" text="Semester"/>
+            <TableColumn fx:id="yearColumn" text="Year"/>
+            <TableColumn fx:id="daysColumn" text="Office Days"/>
+        </columns>
+    </TableView>
+
+    <!-- Close button -->
+    <Button fx:id="closeButton" text="Close" onAction="#onClose"/>
+</VBox> 

@@ -4,6 +4,8 @@ package s25.cs151.application;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 
 // Controller class for defining office hours interface
 public class DefineOfficeHrController {
@@ -36,25 +38,41 @@ public class DefineOfficeHrController {
         String semester = semesterDropdown.getValue();
         String year = yearField.getText();
         
+        // Validate input
+        if (year == null || year.trim().isEmpty()) {
+            showAlert("Please enter a year");
+            return;
+        }
+
         // Create array of boolean values representing selected days
         boolean[] daysSelected = {
-                mondayCheck.isSelected(),
-                tuesdayCheck.isSelected(),
-                wednesdayCheck.isSelected(),
-                thursdayCheck.isSelected(),
-                fridayCheck.isSelected()
+            mondayCheck.isSelected(),
+            tuesdayCheck.isSelected(),
+            wednesdayCheck.isSelected(),
+            thursdayCheck.isSelected(),
+            fridayCheck.isSelected()
         };
 
-        // Print the selected values to console (for debugging/demonstration)
-        System.out.println("Semester: " + semester);
-        System.out.println("Year: " + year);
-        System.out.println("Office Days: " +
-                (daysSelected[0] ? "Monday " : "") +
-                (daysSelected[1] ? "Tuesday " : "") +
-                (daysSelected[2] ? "Wednesday " : "") +
-                (daysSelected[3] ? "Thursday " : "") +
-                (daysSelected[4] ? "Friday " : "")
-        );
+        // Create new SemesterOfficeHours object
+        SemesterOfficeHours officeHours = new SemesterOfficeHours(semester, year, daysSelected);
+        
+        // Save the data
+        DataManager.saveOfficeHours(officeHours);
+
+        // Show success message
+        showAlert("Office hours saved successfully!");
+
+        // Close the window
+        Stage stage = (Stage) saveButton.getScene().getWindow();
+        stage.close();
+    }
+
+    private void showAlert(String message) {
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle("Information");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
     // Handler for cancel button click
