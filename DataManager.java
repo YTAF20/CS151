@@ -33,4 +33,20 @@ public class DataManager {
             return new ArrayList<>();
         }
     }
+
+    private String convertDaysToString(boolean[] daysSelected) {
+        String[] dayNames = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday"};
+        StringBuilder days = new StringBuilder();
+        
+        for (int i = 0; i < daysSelected.length; i++) {
+            if (daysSelected[i]) {
+                if (days.length() > 0) {
+                    days.append(", ");
+                }
+                days.append(dayNames[i]);
+            }
+        }
+        
+        return days.toString();
+    }
 } 
