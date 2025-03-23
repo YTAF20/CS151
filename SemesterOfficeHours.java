@@ -8,6 +8,7 @@ public class SemesterOfficeHours implements Serializable {
     private String year;
     private boolean[] daysSelected;
 
+// Constructor to initialize semester office hours.
     public SemesterOfficeHours(String semester, String year, boolean[] daysSelected) {
         this.semester = semester;
         this.year = year;
