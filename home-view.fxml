@@ -27,6 +27,7 @@
          - onAction event handler that calls MainController.onButtonClick() -->
     <VBox spacing="10" alignment="CENTER">
         <Button text="Define Semester's Office Hours" onAction="#onButtonClick"/>
+        <Button text="Define Timeslot" onAction="#onTimeslotButtonClick"/>
         <Button text="View Office Hours" onAction="#onViewButtonClick"/>
     </VBox>
 </VBox>

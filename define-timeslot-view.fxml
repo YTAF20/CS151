@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="10" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="s25.cs151.application.DefineTimeslotController">
+    
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <!-- Start Time Section -->
+    <Label text="Start Time:"/>
+    <HBox spacing="10">
+        <ComboBox fx:id="startHourCombo" promptText="Hour"/>
+        <ComboBox fx:id="startMinuteCombo" promptText="Minute"/>
+        <ComboBox fx:id="startAmPmCombo" promptText="AM/PM"/>
+    </HBox>
+
+    <!-- End Time Section -->
+    <Label text="End Time:"/>
+    <HBox spacing="10">
+        <ComboBox fx:id="endHourCombo" promptText="Hour"/>
+        <ComboBox fx:id="endMinuteCombo" promptText="Minute"/>
+        <ComboBox fx:id="endAmPmCombo" promptText="AM/PM"/>
+    </HBox>
+
+    <!-- Action Buttons -->
+    <HBox spacing="10" alignment="CENTER">
+        <Button fx:id="saveButton" text="Save" onAction="#onSave"/>
+        <Button fx:id="cancelButton" text="Cancel" onAction="#onCancel"/>
+    </HBox>
+</VBox> 

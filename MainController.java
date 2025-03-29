@@ -53,4 +53,22 @@ public class MainController {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    protected void onTimeslotButtonClick() {
+        try {
+            // Load the timeslot definition view
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("define-timeslot-view.fxml"));
+            Parent root = loader.load();
+
+            // Create new stage for the form
+            Stage timeslotStage = new Stage();
+            timeslotStage.initModality(Modality.APPLICATION_MODAL); // Make it modal
+            timeslotStage.setTitle("Define Timeslot");
+            timeslotStage.setScene(new Scene(root, 300, 250));
+            timeslotStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
