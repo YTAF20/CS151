@@ -39,8 +39,15 @@ public class ViewCoursesController {
             DataManager.loadAllCourses()
         );
         
-        // Sort by course code
-        tableData.sort((c1, c2) -> c1.getCourseCode().compareTo(c2.getCourseCode()));
+        // Sort by course code (descending) and then by section number (descending)
+        tableData.sort((c1, c2) -> {
+            // First compare course codes in descending order
+            int codeCompare = c2.getCourseCode().compareTo(c1.getCourseCode());
+            if (codeCompare != 0) return codeCompare;
+            
+            // If course codes are equal, compare section numbers in descending order
+            return c2.getSectionNumber().compareTo(c1.getSectionNumber());
+        });
         
         coursesTable.setItems(tableData);
     }

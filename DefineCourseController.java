@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
 import java.io.IOException;
+import java.util.List;
 
 public class DefineCourseController {
     @FXML
@@ -35,13 +36,23 @@ public class DefineCourseController {
             return;
         }
 
+        String courseCode = courseCodeField.getText().trim();
+        String courseName = courseNameField.getText().trim();
+        String sectionNumber = sectionNumberField.getText().trim();
+
+        // Check for duplicates
+        List<Course> existingCourses = DataManager.loadAllCourses();
+        for (Course existingCourse : existingCourses) {
+            if (existingCourse.getCourseCode().equalsIgnoreCase(courseCode) &&
+                existingCourse.getCourseName().equalsIgnoreCase(courseName) &&
+                existingCourse.getSectionNumber().equalsIgnoreCase(sectionNumber)) {
+                showAlert("Error: This course already exists!");
+                return;
+            }
+        }
+
         // Create and save new course
-        Course course = new Course(
-            courseCodeField.getText().trim(),
-            courseNameField.getText().trim(),
-            sectionNumberField.getText().trim()
-        );
-        
+        Course course = new Course(courseCode, courseName, sectionNumber);
         DataManager.saveCourse(course);
         showAlert("Course saved successfully!");
 

@@ -28,7 +28,7 @@ public class MainController {
             Stage formStage = new Stage();
             formStage.initModality(Modality.APPLICATION_MODAL); // Make it modal
             formStage.setTitle("Define Semester's Office Hours");
-            formStage.setScene(new Scene(root, 400, 350));
+            formStage.setScene(new Scene(root, 400, 400));
             formStage.show();
         } catch (IOException e) {
             // Print stack trace if there's an error loading the FXML file
@@ -65,7 +65,7 @@ public class MainController {
             Stage timeslotStage = new Stage();
             timeslotStage.initModality(Modality.APPLICATION_MODAL); // Make it modal
             timeslotStage.setTitle("Define Timeslot");
-            timeslotStage.setScene(new Scene(root, 300, 250));
+            timeslotStage.setScene(new Scene(root, 400, 400));
             timeslotStage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -83,7 +83,7 @@ public class MainController {
             Stage courseStage = new Stage();
             courseStage.initModality(Modality.APPLICATION_MODAL);
             courseStage.setTitle("Define Course");
-            courseStage.setScene(new Scene(root, 400, 300));
+            courseStage.setScene(new Scene(root, 400, 400));
             courseStage.show();
         } catch (IOException e) {
             e.printStackTrace();
