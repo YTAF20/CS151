@@ -6,6 +6,11 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Modality;
+import java.io.IOException;
 
 // Controller class for defining office hours interface
 public class DefineOfficeHrController {
@@ -81,5 +86,23 @@ public class DefineOfficeHrController {
         // Get the current window and close it
         Stage stage = (Stage) cancelButton.getScene().getWindow();
         stage.close(); 
+    }
+
+    @FXML
+    private void onViewButtonClick() {
+        try {
+            // Load the view office hours FXML
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("view-office-hours.fxml"));
+            Parent root = loader.load();
+
+            // Create new stage for the view
+            Stage viewStage = new Stage();
+            viewStage.initModality(Modality.APPLICATION_MODAL); // Make it modal
+            viewStage.setTitle("View Office Hours");
+            viewStage.setScene(new Scene(root, 600, 400));
+            viewStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

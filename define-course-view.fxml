@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="10" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="s25.cs151.application.DefineCourseController">
+    
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <!-- Course Code Section -->
+    <Label text="Course Code:"/>
+    <TextField fx:id="courseCodeField" promptText="e.g., CS151"/>
+
+    <!-- Course Name Section -->
+    <Label text="Course Name:"/>
+    <TextField fx:id="courseNameField" promptText="e.g., Object-Oriented Design"/>
+
+    <!-- Section Number Section -->
+    <Label text="Section Number:"/>
+    <TextField fx:id="sectionNumberField" promptText="e.g., 01"/>
+
+    <!-- View Courses Button -->
+    <Button text="View Courses" onAction="#onViewCourses"/>
+
+    <!-- Action Buttons -->
+    <HBox spacing="10" alignment="CENTER">
+        <Button fx:id="saveButton" text="Save" onAction="#onSave"/>
+        <Button fx:id="cancelButton" text="Cancel" onAction="#onCancel"/>
+    </HBox>
+</VBox> 

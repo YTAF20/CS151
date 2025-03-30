@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="10" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="s25.cs151.application.ViewCoursesController">
+    
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <TableView fx:id="coursesTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="codeColumn" text="Course Code"/>
+            <TableColumn fx:id="nameColumn" text="Course Name"/>
+            <TableColumn fx:id="sectionColumn" text="Section"/>
+        </columns>
+    </TableView>
+
+    <Button fx:id="closeButton" text="Close" onAction="#onClose"/>
+</VBox> 

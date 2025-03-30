@@ -28,6 +28,9 @@
         <ComboBox fx:id="endAmPmCombo" promptText="AM/PM"/>
     </HBox>
 
+    <!-- Add this before the Action Buttons section -->
+    <Button text="View All Timeslots" onAction="#onViewTimeslots"/>
+
     <!-- Action Buttons -->
     <HBox spacing="10" alignment="CENTER">
         <Button fx:id="saveButton" text="Save" onAction="#onSave"/>

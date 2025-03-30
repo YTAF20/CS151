@@ -71,4 +71,22 @@ public class MainController {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    protected void onDefineCourseClick() {
+        try {
+            // Load the course definition view
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("define-course-view.fxml"));
+            Parent root = loader.load();
+
+            // Create new stage for the form
+            Stage courseStage = new Stage();
+            courseStage.initModality(Modality.APPLICATION_MODAL);
+            courseStage.setTitle("Define Course");
+            courseStage.setScene(new Scene(root, 400, 300));
+            courseStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

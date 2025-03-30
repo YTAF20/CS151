@@ -33,6 +33,9 @@
         <CheckBox fx:id="fridayCheck" text="Friday"/>         
     </VBox>
 
+    <!-- View Office Hours button -->
+    <Button text="View Office Hours" onAction="#onViewButtonClick"/>
+
     <!-- Action buttons section -->
     <HBox spacing="10">    <!-- Horizontal container for buttons with 10px spacing -->
         <Button fx:id="saveButton" text="Save" onAction="#onSave"/>      <!-- Save button that calls onSave method -->

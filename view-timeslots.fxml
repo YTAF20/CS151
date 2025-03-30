@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="10" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="s25.cs151.application.ViewTimeslotsController">
+    
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <TableView fx:id="timeslotsTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="startTimeColumn" text="Start Time"/>
+            <TableColumn fx:id="endTimeColumn" text="End Time"/>
+        </columns>
+    </TableView>
+
+    <Button fx:id="closeButton" text="Close" onAction="#onClose"/>
+</VBox> 
