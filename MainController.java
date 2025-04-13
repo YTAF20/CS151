@@ -89,4 +89,35 @@ public class MainController {
             e.printStackTrace();
         }
     }
+
+    // Add new method for schedule entry
+    @FXML
+    protected void onScheduleEntryClick() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("view-schedule-entry.fxml"));
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("Enter Office Hours Schedule");
+            stage.setScene(new Scene(root, 500, 700));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    protected void onViewScheduleEntriesClick() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("view-schedule-entries.fxml"));
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("View Schedule Entries");
+            stage.setScene(new Scene(root, 800, 600));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

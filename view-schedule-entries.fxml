@@ -6,20 +6,24 @@
 <?import javafx.geometry.Insets?>
 
 <VBox spacing="10" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="s25.cs151.application.ViewTimeslotsController">
+      fx:controller="s25.cs151.application.ViewScheduleEntriesController">
     
     <padding>
         <Insets top="20" right="20" bottom="20" left="20"/>
     </padding>
 
     <!-- Title -->
-    <Label text="Defined Timeslots" style="-fx-font-size: 18; -fx-font-weight: bold;"/>
+    <Label text="Schedule Entries" style="-fx-font-size: 18; -fx-font-weight: bold;"/>
 
-    <!-- Timeslots Table -->
-    <TableView fx:id="timeslotsTable" VBox.vgrow="ALWAYS">
+    <!-- Schedule Entries Table -->
+    <TableView fx:id="entriesTable" VBox.vgrow="ALWAYS">
         <columns>
-            <TableColumn fx:id="startTimeColumn" text="Start Time"/>
-            <TableColumn fx:id="endTimeColumn" text="End Time"/>
+            <TableColumn fx:id="studentNameColumn" text="Student Name"/>
+            <TableColumn fx:id="dateColumn" text="Date"/>
+            <TableColumn fx:id="timeSlotColumn" text="Time Slot"/>
+            <TableColumn fx:id="courseColumn" text="Course"/>
+            <TableColumn fx:id="reasonColumn" text="Reason"/>
+            <TableColumn fx:id="commentColumn" text="Comment"/>
         </columns>
     </TableView>
 

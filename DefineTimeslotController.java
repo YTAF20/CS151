@@ -99,6 +99,35 @@ public class DefineTimeslotController {
         }
     }
 
+    @FXML
+    private void onClear() {
+        Alert confirmAlert = new Alert(Alert.AlertType.CONFIRMATION);
+        confirmAlert.setTitle("Clear All Timeslots");
+        confirmAlert.setHeaderText("Are you sure?");
+        confirmAlert.setContentText("This will permanently delete all saved timeslots.");
+
+        confirmAlert.showAndWait().ifPresent(response -> {
+            if (response == ButtonType.OK) {
+                // Clear the data
+                DataManager.clearAllTimeslots();
+                
+                // Show success message
+                Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
+                successAlert.setTitle("Success");
+                successAlert.setHeaderText(null);
+                successAlert.setContentText("All timeslots have been cleared.");
+                successAlert.show();
+                
+                // Refresh the view if needed
+                refreshTimeslotList();
+            }
+        });
+    }
+
+    private void refreshTimeslotList() {
+        // Add code to refresh your timeslot display if needed
+    }
+
     private void showAlert(String message) {
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("Information");

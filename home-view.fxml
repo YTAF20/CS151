@@ -29,5 +29,6 @@
         <Button text="Define Semester's Office Hours" onAction="#onButtonClick"/>
         <Button text="Define Timeslot" onAction="#onTimeslotButtonClick"/>
         <Button text="Define Course" onAction="#onDefineCourseClick"/>
+        <Button text="Enter Office Hours Schedule" onAction="#onScheduleEntryClick"/>
     </VBox>
 </VBox>

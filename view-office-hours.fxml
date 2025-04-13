@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.control.*?>
 <?import javafx.geometry.Insets?>
 
@@ -24,4 +25,10 @@
 
     <!-- Close button to exit the view -->
     <Button fx:id="closeButton" text="Close" onAction="#onClose"/>
+
+    <!-- Add HBox for buttons -->
+    <HBox spacing="10">
+        <Button fx:id="clearButton" text="Clear All" onAction="#onClear" style="-fx-background-color: #ff4444;"/>
+        <Button fx:id="closeButton" text="Close" onAction="#onClose"/>
+    </HBox>
 </VBox> 

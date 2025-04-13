@@ -65,6 +65,31 @@ public class ViewTimeslotsController {
     }
 
     @FXML
+    private void onClear() {
+        Alert confirmAlert = new Alert(Alert.AlertType.CONFIRMATION);
+        confirmAlert.setTitle("Clear All Timeslots");
+        confirmAlert.setHeaderText("Are you sure?");
+        confirmAlert.setContentText("This will permanently delete all saved timeslots.");
+
+        confirmAlert.showAndWait().ifPresent(response -> {
+            if (response == ButtonType.OK) {
+                // Clear the data
+                DataManager.clearAllTimeslots();
+                
+                // Show success message
+                Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
+                successAlert.setTitle("Success");
+                successAlert.setHeaderText(null);
+                successAlert.setContentText("All timeslots have been cleared.");
+                successAlert.show();
+                
+                // Refresh the table
+                loadTimeslots();
+            }
+        });
+    }
+
+    @FXML
     private void onClose() {
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();

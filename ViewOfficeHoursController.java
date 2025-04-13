@@ -77,6 +77,33 @@ public class ViewOfficeHoursController {
         stage.close();
     }
 
+    @FXML
+    private void onClear() {
+        // Show confirmation dialog
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Clear All Entries");
+        alert.setHeaderText("Are you sure?");
+        alert.setContentText("This will permanently delete all saved office hours entries.");
+
+        // Wait for user response
+        alert.showAndWait().ifPresent(response -> {
+            if (response == ButtonType.OK) {
+                // Clear the data
+                DataManager.clearAllOfficeHours();
+                
+                // Refresh the table
+                loadOfficeHours();
+                
+                // Show success message
+                Alert success = new Alert(Alert.AlertType.INFORMATION);
+                success.setTitle("Success");
+                success.setHeaderText(null);
+                success.setContentText("All entries have been cleared.");
+                success.show();
+            }
+        });
+    }
+
     // Helper class for table display
     public static class OfficeHourRow {
         private final String semester;

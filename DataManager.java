@@ -8,6 +8,7 @@ public class DataManager {
     private static final String DATA_FILE = "office_hours.dat"; // File to store office hours data
     private static final String TIMESLOTS_FILE = "timeslots.dat";
     private static final String COURSES_FILE = "courses.dat";
+    private static final String SCHEDULE_FILE = "schedule_entries.dat";
 
     // Save office hours data to file
     public static void saveOfficeHours(SemesterOfficeHours data) {
@@ -106,6 +107,68 @@ public class DataManager {
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
             return new ArrayList<>();
+        }
+    }
+
+    public static void clearAllOfficeHours() {
+        try (ObjectOutputStream oos = new ObjectOutputStream(
+                new FileOutputStream(DATA_FILE))) {
+            oos.writeObject(new ArrayList<>()); // Write empty list to file
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void saveScheduleEntries(List<ScheduleEntry> entries) {
+        try (ObjectOutputStream oos = new ObjectOutputStream(
+                new FileOutputStream(SCHEDULE_FILE))) {
+            oos.writeObject(entries);
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Failed to save schedule entries", e);
+        }
+    }
+    
+    @SuppressWarnings("unchecked")
+    public static List<ScheduleEntry> loadScheduleEntries() {
+        try (ObjectInputStream ois = new ObjectInputStream(
+                new FileInputStream(SCHEDULE_FILE))) {
+            return (List<ScheduleEntry>) ois.readObject();
+        } catch (FileNotFoundException e) {
+            return new ArrayList<>();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Failed to load schedule entries", e);
+        }
+    }
+
+    // Add clear method for timeslots
+    public static void clearAllTimeslots() {
+        try (ObjectOutputStream oos = new ObjectOutputStream(
+                new FileOutputStream(TIMESLOTS_FILE))) {
+            oos.writeObject(new ArrayList<>()); // Write empty list
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Add clear method for courses
+    public static void clearAllCourses() {
+        try (ObjectOutputStream oos = new ObjectOutputStream(
+                new FileOutputStream(COURSES_FILE))) {
+            oos.writeObject(new ArrayList<>()); // Write empty list
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Add this new method for clearing schedule entries
+    public static void clearAllScheduleEntries() {
+        try (ObjectOutputStream oos = new ObjectOutputStream(
+                new FileOutputStream(SCHEDULE_FILE))) {
+            oos.writeObject(new ArrayList<>());
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 } 
