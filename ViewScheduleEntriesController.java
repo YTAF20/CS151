@@ -9,6 +9,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.time.format.DateTimeFormatter;
 import java.util.Comparator;
 import java.util.List;
+import java.util.ArrayList;
 
 public class ViewScheduleEntriesController {
     @FXML
@@ -157,14 +158,11 @@ public class ViewScheduleEntriesController {
         confirmAlert.showAndWait().ifPresent(response -> {
             if (response == ButtonType.OK) {
                 try {
-                    // Get all entries
-                    List<ScheduleEntry> entries = DataManager.loadScheduleEntries();
+                    // Remove the selected entry from allEntries
+                    allEntries.remove(selectedEntry);
                     
-                    // Remove the selected entry
-                    entries.remove(selectedEntry);
-                    
-                    // Save the updated list
-                    DataManager.saveScheduleEntries(entries);
+                    // Save the updated list to file
+                    DataManager.saveScheduleEntries(new ArrayList<>(allEntries));
                     
                     // Show success message
                     Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
@@ -173,8 +171,8 @@ public class ViewScheduleEntriesController {
                     successAlert.setContentText("Schedule entry has been deleted successfully.");
                     successAlert.show();
                     
-                    // Refresh the table
-                    loadSortedEntries();
+                    // Refresh the table view
+                    entriesTable.setItems(allEntries);
                 } catch (Exception e) {
                     Alert errorAlert = new Alert(Alert.AlertType.ERROR);
                     errorAlert.setTitle("Error");
