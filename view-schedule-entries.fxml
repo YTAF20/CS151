@@ -15,6 +15,13 @@
     <!-- Title -->
     <Label text="Schedule Entries" style="-fx-font-size: 18; -fx-font-weight: bold;"/>
 
+    <!-- Search Section -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <TextField fx:id="searchField" promptText="Search by student name..."/>
+        <Button fx:id="searchButton" text="Search" onAction="#onSearch"/>
+        <Button fx:id="clearSearchButton" text="Clear Search" onAction="#onClearSearch"/>
+    </HBox>
+
     <!-- Schedule Entries Table -->
     <TableView fx:id="entriesTable" VBox.vgrow="ALWAYS">
         <columns>

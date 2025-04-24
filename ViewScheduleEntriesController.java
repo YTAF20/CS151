@@ -34,8 +34,18 @@ public class ViewScheduleEntriesController {
 
     @FXML
     private Button deleteButton;
+    
+    @FXML
+    private TextField searchField;
+    
+    @FXML
+    private Button searchButton;
+    
+    @FXML
+    private Button clearSearchButton;
 
     private final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+    private ObservableList<ScheduleEntry> allEntries;
 
     @FXML
     private void initialize() {
@@ -70,9 +80,29 @@ public class ViewScheduleEntriesController {
             })
         );
         
-        // Update table with sorted entries
-        ObservableList<ScheduleEntry> sortedEntries = FXCollections.observableArrayList(entries);
-        entriesTable.setItems(sortedEntries);
+        // Store all entries for filtering
+        allEntries = FXCollections.observableArrayList(entries);
+        entriesTable.setItems(allEntries);
+    }
+
+    @FXML
+    private void onSearch() {
+        String searchText = searchField.getText().trim().toLowerCase();
+        if (searchText.isEmpty()) {
+            entriesTable.setItems(allEntries);
+            return;
+        }
+
+        ObservableList<ScheduleEntry> filteredEntries = allEntries.filtered(entry -> 
+            entry.getStudentName().toLowerCase().contains(searchText)
+        );
+        entriesTable.setItems(filteredEntries);
+    }
+
+    @FXML
+    private void onClearSearch() {
+        searchField.clear();
+        entriesTable.setItems(allEntries);
     }
 
     @FXML
