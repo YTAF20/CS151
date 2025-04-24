@@ -29,6 +29,9 @@
 
     <!-- Buttons -->
     <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button fx:id="deleteButton" text="Delete Selected" 
+                onAction="#onDelete" 
+                style="-fx-background-color: #ff4444; -fx-text-fill: white;"/>
         <Button fx:id="clearButton" text="Clear All" 
                 onAction="#onClear" 
                 style="-fx-background-color: #ff4444; -fx-text-fill: white;"/>

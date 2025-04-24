@@ -32,6 +32,9 @@ public class ViewScheduleEntriesController {
     @FXML
     private TableColumn<ScheduleEntry, String> commentColumn;
 
+    @FXML
+    private Button deleteButton;
+
     private final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
 
     @FXML
@@ -101,5 +104,55 @@ public class ViewScheduleEntriesController {
     private void onClose() {
         Stage stage = (Stage) entriesTable.getScene().getWindow();
         stage.close();
+    }
+
+    @FXML
+    private void onDelete() {
+        ScheduleEntry selectedEntry = entriesTable.getSelectionModel().getSelectedItem();
+        
+        if (selectedEntry == null) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("No Selection");
+            alert.setHeaderText(null);
+            alert.setContentText("Please select an entry to delete.");
+            alert.showAndWait();
+            return;
+        }
+
+        Alert confirmAlert = new Alert(Alert.AlertType.CONFIRMATION);
+        confirmAlert.setTitle("Delete Schedule Entry");
+        confirmAlert.setHeaderText("Are you sure?");
+        confirmAlert.setContentText("This will permanently delete the selected schedule entry.");
+
+        confirmAlert.showAndWait().ifPresent(response -> {
+            if (response == ButtonType.OK) {
+                try {
+                    // Get all entries
+                    List<ScheduleEntry> entries = DataManager.loadScheduleEntries();
+                    
+                    // Remove the selected entry
+                    entries.remove(selectedEntry);
+                    
+                    // Save the updated list
+                    DataManager.saveScheduleEntries(entries);
+                    
+                    // Show success message
+                    Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
+                    successAlert.setTitle("Success");
+                    successAlert.setHeaderText(null);
+                    successAlert.setContentText("Schedule entry has been deleted successfully.");
+                    successAlert.show();
+                    
+                    // Refresh the table
+                    loadSortedEntries();
+                } catch (Exception e) {
+                    Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+                    errorAlert.setTitle("Error");
+                    errorAlert.setHeaderText(null);
+                    errorAlert.setContentText("Failed to delete entry: " + e.getMessage());
+                    errorAlert.show();
+                }
+            }
+        });
     }
 } 
