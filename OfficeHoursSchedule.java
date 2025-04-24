@@ -38,7 +38,6 @@ public class OfficeHoursSchedule implements Serializable {
     
     public String getReason() { return reason; }
     public void setReason(String reason) { this.reason = reason; }
-    
     public String getComment() { return comment; }
     public void setComment(String comment) { this.comment = comment; }
 } 
