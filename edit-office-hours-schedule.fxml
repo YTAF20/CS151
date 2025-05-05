@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="10" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="s25.cs151.application.EditOfficeHoursScheduleController">
+    
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <!-- Title -->
+    <Label text="Edit Office Hours Schedule" style="-fx-font-size: 18; -fx-font-weight: bold;"/>
+
+    <!-- Search Section -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <TextField fx:id="searchField" promptText="Search by student name..."/>
+        <Button fx:id="searchButton" text="Search" onAction="#onSearch"/>
+        <Button fx:id="clearSearchButton" text="Clear Search" onAction="#onClearSearch"/>
+    </HBox>
+
+    <!-- Office Hours Schedules Table -->
+    <TableView fx:id="entriesTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="studentNameColumn" text="Student Name"/>
+            <TableColumn fx:id="dateColumn" text="Date"/>
+            <TableColumn fx:id="timeSlotColumn" text="Time Slot"/>
+            <TableColumn fx:id="courseColumn" text="Course"/>
+            <TableColumn fx:id="reasonColumn" text="Reason"/>
+            <TableColumn fx:id="commentColumn" text="Comment"/>
+        </columns>
+    </TableView>
+
+    <!-- Buttons -->
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button fx:id="editButton" text="Edit" onAction="#onEdit"/>
+        <Button fx:id="closeButton" text="Close" onAction="#onClose"/>
+    </HBox>
+
+</VBox> 

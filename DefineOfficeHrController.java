@@ -42,7 +42,7 @@ public class DefineOfficeHrController {
         // Get selected semester and year from form
         String semester = semesterDropdown.getValue();
         String year = yearField.getText();
-        
+
         // Validate input
         if (year == null || year.trim().isEmpty()) {
             showAlert("Please enter a year");
@@ -51,16 +51,16 @@ public class DefineOfficeHrController {
 
         // Create array of boolean values representing selected days
         boolean[] daysSelected = {
-            mondayCheck.isSelected(),
-            tuesdayCheck.isSelected(),
-            wednesdayCheck.isSelected(),
-            thursdayCheck.isSelected(),
-            fridayCheck.isSelected()
+                mondayCheck.isSelected(),
+                tuesdayCheck.isSelected(),
+                wednesdayCheck.isSelected(),
+                thursdayCheck.isSelected(),
+                fridayCheck.isSelected()
         };
 
         // Create new SemesterOfficeHours object
         SemesterOfficeHours officeHours = new SemesterOfficeHours(semester, year, daysSelected);
-        
+
         // Save the data
         DataManager.saveOfficeHours(officeHours);
 
@@ -85,7 +85,7 @@ public class DefineOfficeHrController {
     private void onCancel() {
         // Get the current window and close it
         Stage stage = (Stage) cancelButton.getScene().getWindow();
-        stage.close(); 
+        stage.close();
     }
 
     @FXML

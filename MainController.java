@@ -120,4 +120,19 @@ public class MainController {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    protected void onEditOfficeHoursClick() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("edit-office-hours-schedule.fxml"));
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("Edit Office Hours Schedule");
+            stage.setScene(new Scene(root, 800, 600));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

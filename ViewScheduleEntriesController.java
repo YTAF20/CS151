@@ -10,38 +10,43 @@ import java.time.format.DateTimeFormatter;
 import java.util.Comparator;
 import java.util.List;
 import java.util.ArrayList;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.TableCell;
+import javafx.stage.Modality;
 
 public class ViewScheduleEntriesController {
     @FXML
     private TableView<ScheduleEntry> entriesTable;
-    
+
     @FXML
     private TableColumn<ScheduleEntry, String> studentNameColumn;
-    
+
     @FXML
     private TableColumn<ScheduleEntry, String> dateColumn;
-    
+
     @FXML
     private TableColumn<ScheduleEntry, String> timeSlotColumn;
-    
+
     @FXML
     private TableColumn<ScheduleEntry, String> courseColumn;
-    
+
     @FXML
     private TableColumn<ScheduleEntry, String> reasonColumn;
-    
+
     @FXML
     private TableColumn<ScheduleEntry, String> commentColumn;
 
     @FXML
     private Button deleteButton;
-    
+
     @FXML
     private TextField searchField;
-    
+
     @FXML
     private Button searchButton;
-    
+
     @FXML
     private Button clearSearchButton;
 
@@ -52,11 +57,11 @@ public class ViewScheduleEntriesController {
     private void initialize() {
         // Configure table columns
         studentNameColumn.setCellValueFactory(new PropertyValueFactory<>("studentName"));
-        dateColumn.setCellValueFactory(cellData -> 
-            cellData.getValue().getScheduleDate() != null ? 
-            javafx.beans.binding.Bindings.createStringBinding(
-                () -> cellData.getValue().getScheduleDate().format(dateFormatter)
-            ) : null
+        dateColumn.setCellValueFactory(cellData ->
+                cellData.getValue().getScheduleDate() != null ?
+                        javafx.beans.binding.Bindings.createStringBinding(
+                                () -> cellData.getValue().getScheduleDate().format(dateFormatter)
+                        ) : null
         );
         timeSlotColumn.setCellValueFactory(new PropertyValueFactory<>("timeSlot"));
         courseColumn.setCellValueFactory(new PropertyValueFactory<>("course"));
@@ -70,17 +75,17 @@ public class ViewScheduleEntriesController {
     private void loadSortedEntries() {
         // Get all entries
         List<ScheduleEntry> entries = DataManager.loadScheduleEntries();
-        
+
         // Sort entries by date and then by timeslot
         entries.sort(Comparator
-            .comparing(ScheduleEntry::getScheduleDate) // First sort by date
-            .thenComparing(entry -> { // Then sort by timeslot
-                String timeSlot = entry.getTimeSlot();
-                // Extract start time for comparison
-                return timeSlot.split(" - ")[0];
-            })
+                .comparing(ScheduleEntry::getScheduleDate) // First sort by date
+                .thenComparing(entry -> { // Then sort by timeslot
+                    String timeSlot = entry.getTimeSlot();
+                    // Extract start time for comparison
+                    return timeSlot.split(" - ")[0];
+                })
         );
-        
+
         // Store all entries for filtering
         allEntries = FXCollections.observableArrayList(entries);
         entriesTable.setItems(allEntries);
@@ -94,8 +99,8 @@ public class ViewScheduleEntriesController {
             return;
         }
 
-        ObservableList<ScheduleEntry> filteredEntries = allEntries.filtered(entry -> 
-            entry.getStudentName().toLowerCase().contains(searchText)
+        ObservableList<ScheduleEntry> filteredEntries = allEntries.filtered(entry ->
+                entry.getStudentName().toLowerCase().contains(searchText)
         );
         entriesTable.setItems(filteredEntries);
     }
@@ -117,14 +122,14 @@ public class ViewScheduleEntriesController {
             if (response == ButtonType.OK) {
                 // Clear the data
                 DataManager.clearAllScheduleEntries();
-                
+
                 // Show success message
                 Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
                 successAlert.setTitle("Success");
                 successAlert.setHeaderText(null);
                 successAlert.setContentText("All schedule entries have been cleared.");
                 successAlert.show();
-                
+
                 // Refresh the table
                 loadSortedEntries();
             }
@@ -140,7 +145,7 @@ public class ViewScheduleEntriesController {
     @FXML
     private void onDelete() {
         ScheduleEntry selectedEntry = entriesTable.getSelectionModel().getSelectedItem();
-        
+
         if (selectedEntry == null) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("No Selection");
@@ -160,17 +165,17 @@ public class ViewScheduleEntriesController {
                 try {
                     // Remove the selected entry from allEntries
                     allEntries.remove(selectedEntry);
-                    
+
                     // Save the updated list to file
                     DataManager.saveScheduleEntries(new ArrayList<>(allEntries));
-                    
+
                     // Show success message
                     Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
                     successAlert.setTitle("Success");
                     successAlert.setHeaderText(null);
                     successAlert.setContentText("Schedule entry has been deleted successfully.");
                     successAlert.show();
-                    
+
                     // Refresh the table view
                     entriesTable.setItems(allEntries);
                 } catch (Exception e) {
@@ -183,4 +188,8 @@ public class ViewScheduleEntriesController {
             }
         });
     }
-} 
+
+    public void refreshTable() {
+        loadSortedEntries();
+    }
+}

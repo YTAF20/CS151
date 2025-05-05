@@ -22,4 +22,4 @@ public class Course implements Serializable {
     public String toString() {
         return String.format("%s - %s (Section %s)", courseCode, courseName, sectionNumber);
     }
-} 
+}

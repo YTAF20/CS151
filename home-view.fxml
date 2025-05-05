@@ -30,5 +30,6 @@
         <Button text="Define Timeslot" onAction="#onTimeslotButtonClick"/>
         <Button text="Define Course" onAction="#onDefineCourseClick"/>
         <Button text="Enter Office Hours Schedule" onAction="#onScheduleEntryClick"/>
+        <Button text="Edit Office Hours Schedule" onAction="#onEditOfficeHoursClick"/>
     </VBox>
 </VBox>

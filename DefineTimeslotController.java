@@ -53,26 +53,26 @@ public class DefineTimeslotController {
     @FXML
     private void onSave() {
         // Validate inputs
-        if (startHourCombo.getValue() == null || startMinuteCombo.getValue() == null || 
-            startAmPmCombo.getValue() == null || endHourCombo.getValue() == null || 
-            endMinuteCombo.getValue() == null || endAmPmCombo.getValue() == null) {
+        if (startHourCombo.getValue() == null || startMinuteCombo.getValue() == null ||
+                startAmPmCombo.getValue() == null || endHourCombo.getValue() == null ||
+                endMinuteCombo.getValue() == null || endAmPmCombo.getValue() == null) {
             showAlert("Please fill in all time fields");
             return;
         }
 
         // Create and save new timeslot
         Timeslot timeslot = new Timeslot(
-            startHourCombo.getValue(),
-            startMinuteCombo.getValue(),
-            startAmPmCombo.getValue(),
-            endHourCombo.getValue(),
-            endMinuteCombo.getValue(),
-            endAmPmCombo.getValue()
+                startHourCombo.getValue(),
+                startMinuteCombo.getValue(),
+                startAmPmCombo.getValue(),
+                endHourCombo.getValue(),
+                endMinuteCombo.getValue(),
+                endAmPmCombo.getValue()
         );
-        
+
         DataManager.saveTimeslot(timeslot);
         showAlert("Timeslot saved successfully!");
-        
+
         Stage stage = (Stage) saveButton.getScene().getWindow();
         stage.close();
     }
@@ -110,14 +110,14 @@ public class DefineTimeslotController {
             if (response == ButtonType.OK) {
                 // Clear the data
                 DataManager.clearAllTimeslots();
-                
+
                 // Show success message
                 Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
                 successAlert.setTitle("Success");
                 successAlert.setHeaderText(null);
                 successAlert.setContentText("All timeslots have been cleared.");
                 successAlert.show();
-                
+
                 // Refresh the view if needed
                 refreshTimeslotList();
             }
@@ -135,4 +135,4 @@ public class DefineTimeslotController {
         alert.setContentText(message);
         alert.showAndWait();
     }
-} 
+}

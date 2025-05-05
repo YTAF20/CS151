@@ -14,7 +14,7 @@ public class DataManager {
     public static void saveOfficeHours(SemesterOfficeHours data) {
         List<SemesterOfficeHours> allData = loadAllOfficeHours(); // Retrieve existing data
         allData.add(data); // Add new data to the list
-        
+
         try (ObjectOutputStream oos = new ObjectOutputStream(
                 new FileOutputStream(DATA_FILE))) {
             oos.writeObject(allData); //Serialize and write data to file
@@ -40,7 +40,7 @@ public class DataManager {
     public static void saveTimeslot(Timeslot timeslot) {
         List<Timeslot> allTimeslots = loadAllTimeslots();
         allTimeslots.add(timeslot);
-        
+
         try (ObjectOutputStream oos = new ObjectOutputStream(
                 new FileOutputStream(TIMESLOTS_FILE))) {
             oos.writeObject(allTimeslots);
@@ -65,14 +65,14 @@ public class DataManager {
     /**
      * C@onverts a boolean array representing selected days into a formatted string.
      * Example: {true, false, true, false, true} -> "Monday, Wednesday, Friday"
-     * 
+     *
      * @param daysSelected A boolean array where each index represents a day (Monday-Friday).
      * @return A formatted string listing the selected days.
      */
     private String convertDaysToString(boolean[] daysSelected) {
         String[] dayNames = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday"};
         StringBuilder days = new StringBuilder();
-        
+
         for (int i = 0; i < daysSelected.length; i++) {
             if (daysSelected[i]) {
                 if (days.length() > 0) {
@@ -81,14 +81,14 @@ public class DataManager {
                 days.append(dayNames[i]); //Append the selected day
             }
         }
-        
+
         return days.toString(); // Return the formatted String
     }
 
     public static void saveCourse(Course course) {
         List<Course> allCourses = loadAllCourses();
         allCourses.add(course);
-        
+
         try (ObjectOutputStream oos = new ObjectOutputStream(
                 new FileOutputStream(COURSES_FILE))) {
             oos.writeObject(allCourses);
@@ -128,7 +128,7 @@ public class DataManager {
             throw new RuntimeException("Failed to save schedule entries", e);
         }
     }
-    
+
     @SuppressWarnings("unchecked")
     public static List<ScheduleEntry> loadScheduleEntries() {
         try (ObjectInputStream ois = new ObjectInputStream(
@@ -171,4 +171,4 @@ public class DataManager {
             e.printStackTrace();
         }
     }
-} 
+}

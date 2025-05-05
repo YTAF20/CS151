@@ -31,4 +31,4 @@ public class Timeslot implements Serializable {
     public String getStartHour() { return startHour; }
     public String getStartMinute() { return startMinute; }
     public String getStartAmPm() { return startAmPm; }
-} 
+}

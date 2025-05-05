@@ -16,33 +16,40 @@ import javafx.stage.Modality;
 public class ScheduleEntryController {
     @FXML
     private TextField studentNameField;
-    
+
     @FXML
     private DatePicker scheduleDatePicker;
-    
+
     @FXML
     private ComboBox<String> timeSlotComboBox;
-    
+
     @FXML
     private ComboBox<String> courseComboBox;
-    
+
     @FXML
     private TextField reasonField;
-    
+
     @FXML
     private TextArea commentField;
-    
+
     @FXML
     private Button saveButton;
-    
+
     @FXML
     private Button cancelButton;
+
+    private ScheduleEntry editingEntry = null;
+    private ViewScheduleEntriesController parentController = null;
+    // Store original values for matching
+    private String originalStudentName = null;
+    private LocalDate originalScheduleDate = null;
+    private String originalTimeSlot = null;
 
     @FXML
     private void initialize() {
         // Set today's date as default for date picker
         scheduleDatePicker.setValue(LocalDate.now());
-        
+
         // Load and populate timeslots
         List<Timeslot> timeslots = DataManager.loadAllTimeslots();
         ObservableList<String> timeSlotStrings = FXCollections.observableArrayList();
@@ -50,7 +57,7 @@ public class ScheduleEntryController {
             timeSlotStrings.add(slot.getFormattedStartTime() + " - " + slot.getFormattedEndTime());
         }
         timeSlotComboBox.setItems(timeSlotStrings);
-        
+
         // Load and populate courses
         List<Course> courses = DataManager.loadAllCourses();
         ObservableList<String> courseStrings = FXCollections.observableArrayList();
@@ -58,7 +65,7 @@ public class ScheduleEntryController {
             courseStrings.add(course.getCourseCode() + " - " + course.getCourseName() + " (Section " + course.getSectionNumber() + ")");
         }
         courseComboBox.setItems(courseStrings);
-        
+
         // Set prompt text for optional fields
         reasonField.setPromptText("Enter reason (optional)");
         commentField.setPromptText("Enter comment (optional)");
@@ -67,22 +74,30 @@ public class ScheduleEntryController {
     @FXML
     private void onSave() {
         if (validateInput()) {
-            // Create schedule entry object
-            ScheduleEntry entry = new ScheduleEntry(
-                studentNameField.getText().trim(),
-                scheduleDatePicker.getValue(),
-                timeSlotComboBox.getValue(),
-                courseComboBox.getValue(),
-                reasonField.getText().trim(),
-                commentField.getText().trim()
-            );
-            
-            // Save the entry
-            saveEntry(entry);
-            
+            if (editingEntry != null) {
+                // Update the existing entry
+                editingEntry.setStudentName(studentNameField.getText().trim());
+                editingEntry.setScheduleDate(scheduleDatePicker.getValue());
+                editingEntry.setTimeSlot(timeSlotComboBox.getValue());
+                editingEntry.setCourse(courseComboBox.getValue());
+                editingEntry.setReason(reasonField.getText().trim());
+                editingEntry.setComment(commentField.getText().trim());
+                saveEditedEntry(editingEntry);
+                if (parentController != null) parentController.refreshTable();
+            } else {
+                // Create schedule entry object
+                ScheduleEntry entry = new OfficeHoursSchedule(
+                        studentNameField.getText().trim(),
+                        scheduleDatePicker.getValue(),
+                        timeSlotComboBox.getValue(),
+                        courseComboBox.getValue(),
+                        reasonField.getText().trim(),
+                        commentField.getText().trim()
+                );
+                saveEntry(entry);
+            }
             // Show success message
             showSuccessAlert();
-            
             // Close the window
             closeWindow();
         }
@@ -90,24 +105,24 @@ public class ScheduleEntryController {
 
     private boolean validateInput() {
         StringBuilder errorMessage = new StringBuilder();
-        
+
         // Check required fields
         if (studentNameField.getText().trim().isEmpty()) {
             errorMessage.append("Student name is required.\n");
         }
-        
+
         if (scheduleDatePicker.getValue() == null) {
             errorMessage.append("Schedule date is required.\n");
         }
-        
+
         if (timeSlotComboBox.getValue() == null) {
             errorMessage.append("Time slot selection is required.\n");
         }
-        
+
         if (courseComboBox.getValue() == null) {
             errorMessage.append("Course selection is required.\n");
         }
-        
+
         if (errorMessage.length() > 0) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Required Fields");
@@ -116,7 +131,7 @@ public class ScheduleEntryController {
             alert.showAndWait();
             return false;
         }
-        
+
         return true;
     }
 
@@ -124,14 +139,33 @@ public class ScheduleEntryController {
         try {
             // Get existing entries
             List<ScheduleEntry> entries = DataManager.loadScheduleEntries();
-            
+
             // Add new entry
             entries.add(entry);
-            
+
             // Save updated list
             DataManager.saveScheduleEntries(entries);
         } catch (Exception e) {
             showErrorAlert("Failed to save entry: " + e.getMessage());
+        }
+    }
+
+    private void saveEditedEntry(ScheduleEntry entry) {
+        try {
+            List<ScheduleEntry> entries = DataManager.loadScheduleEntries();
+            for (int i = 0; i < entries.size(); i++) {
+                ScheduleEntry e = entries.get(i);
+                // Match by original unique fields
+                if (e.getStudentName().equals(originalStudentName)
+                        && e.getScheduleDate().equals(originalScheduleDate)
+                        && e.getTimeSlot().equals(originalTimeSlot)) {
+                    entries.set(i, entry);
+                    break;
+                }
+            }
+            DataManager.saveScheduleEntries(entries);
+        } catch (Exception e) {
+            showErrorAlert("Failed to save edited entry: " + e.getMessage());
         }
     }
 
@@ -175,4 +209,20 @@ public class ScheduleEntryController {
             e.printStackTrace();
         }
     }
-} 
+
+    public void setEditingEntry(ScheduleEntry entry, ViewScheduleEntriesController parent) {
+        this.editingEntry = entry;
+        this.parentController = parent;
+        // Store original values for matching
+        this.originalStudentName = entry.getStudentName();
+        this.originalScheduleDate = entry.getScheduleDate();
+        this.originalTimeSlot = entry.getTimeSlot();
+        // Populate fields with entry data
+        studentNameField.setText(entry.getStudentName());
+        scheduleDatePicker.setValue(entry.getScheduleDate());
+        timeSlotComboBox.setValue(entry.getTimeSlot());
+        courseComboBox.setValue(entry.getCourse());
+        reasonField.setText(entry.getReason());
+        commentField.setText(entry.getComment());
+    }
+}

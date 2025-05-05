@@ -12,23 +12,23 @@ import java.util.Comparator;
 public class ViewTimeslotsController {
     @FXML
     private TableView<Timeslot> timeslotsTable;
-    
+
     @FXML
     private TableColumn<Timeslot, String> startTimeColumn;
-    
+
     @FXML
     private TableColumn<Timeslot, String> endTimeColumn;
-    
+
     @FXML
     private Button closeButton;
 
     @FXML
     private void initialize() {
         // Configure table columns
-        startTimeColumn.setCellValueFactory(data -> 
-            new SimpleStringProperty(data.getValue().getFormattedStartTime()));
-        endTimeColumn.setCellValueFactory(data -> 
-            new SimpleStringProperty(data.getValue().getFormattedEndTime()));
+        startTimeColumn.setCellValueFactory(data ->
+                new SimpleStringProperty(data.getValue().getFormattedStartTime()));
+        endTimeColumn.setCellValueFactory(data ->
+                new SimpleStringProperty(data.getValue().getFormattedEndTime()));
 
         // Load and display sorted data
         loadTimeslots();
@@ -36,7 +36,7 @@ public class ViewTimeslotsController {
 
     private void loadTimeslots() {
         ObservableList<Timeslot> tableData = FXCollections.observableArrayList(
-            DataManager.loadAllTimeslots()
+                DataManager.loadAllTimeslots()
         );
 
         // Sort the timeslots
@@ -53,14 +53,14 @@ public class ViewTimeslotsController {
     private int convertToMinutes(String hour, String minute, String amPm) {
         int h = Integer.parseInt(hour);
         int m = Integer.parseInt(minute);
-        
+
         // Convert to 24-hour format
         if (amPm.equals("PM") && h != 12) {
             h += 12;
         } else if (amPm.equals("AM") && h == 12) {
             h = 0;
         }
-        
+
         return h * 60 + m;
     }
 
@@ -75,14 +75,14 @@ public class ViewTimeslotsController {
             if (response == ButtonType.OK) {
                 // Clear the data
                 DataManager.clearAllTimeslots();
-                
+
                 // Show success message
                 Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
                 successAlert.setTitle("Success");
                 successAlert.setHeaderText(null);
                 successAlert.setContentText("All timeslots have been cleared.");
                 successAlert.show();
-                
+
                 // Refresh the table
                 loadTimeslots();
             }
@@ -94,4 +94,4 @@ public class ViewTimeslotsController {
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
     }
-} 
+}

@@ -11,16 +11,16 @@ import java.util.*;
 public class ViewOfficeHoursController {
     @FXML
     private TableView<OfficeHourRow> officeHoursTable;
-    
+
     @FXML
     private TableColumn<OfficeHourRow, String> semesterColumn;
-    
+
     @FXML
     private TableColumn<OfficeHourRow, String> yearColumn;
-    
+
     @FXML
     private TableColumn<OfficeHourRow, String> daysColumn;
-    
+
     @FXML
     private Button closeButton;
 
@@ -45,10 +45,10 @@ public class ViewOfficeHoursController {
 
     private void loadOfficeHours() {
         ObservableList<OfficeHourRow> tableData = FXCollections.observableArrayList();
-        
+
         // Load saved office hours
         List<SemesterOfficeHours> savedHours = DataManager.loadAllOfficeHours();
-        
+
         // Convert each SemesterOfficeHours to a display row
         for (SemesterOfficeHours hour : savedHours) {
             tableData.add(new OfficeHourRow(hour));
@@ -62,11 +62,11 @@ public class ViewOfficeHoursController {
 
             // Then, compare by semester
             return Integer.compare(
-                SEMESTER_ORDER.get(row1.getSemester()),
-                SEMESTER_ORDER.get(row2.getSemester())
+                    SEMESTER_ORDER.get(row1.getSemester()),
+                    SEMESTER_ORDER.get(row2.getSemester())
             );
         });
-        
+
         // Set the sorted data to the table
         officeHoursTable.setItems(tableData);
     }
@@ -90,10 +90,10 @@ public class ViewOfficeHoursController {
             if (response == ButtonType.OK) {
                 // Clear the data
                 DataManager.clearAllOfficeHours();
-                
+
                 // Refresh the table
                 loadOfficeHours();
-                
+
                 // Show success message
                 Alert success = new Alert(Alert.AlertType.INFORMATION);
                 success.setTitle("Success");
@@ -119,7 +119,7 @@ public class ViewOfficeHoursController {
         private String convertDaysToString(boolean[] daysSelected) {
             String[] dayNames = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday"};
             StringBuilder days = new StringBuilder();
-            
+
             for (int i = 0; i < daysSelected.length; i++) {
                 if (daysSelected[i]) {
                     if (days.length() > 0) {
@@ -128,7 +128,7 @@ public class ViewOfficeHoursController {
                     days.append(dayNames[i]);
                 }
             }
-            
+
             return days.toString();
         }
 
@@ -137,4 +137,4 @@ public class ViewOfficeHoursController {
         public String getYear() { return year; }
         public String getDays() { return days; }
     }
-} 
+}

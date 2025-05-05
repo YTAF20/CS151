@@ -13,16 +13,16 @@ import java.util.List;
 public class DefineCourseController {
     @FXML
     private TextField courseCodeField;
-    
+
     @FXML
     private TextField courseNameField;
-    
+
     @FXML
     private TextField sectionNumberField;
-    
+
     @FXML
     private Button saveButton;
-    
+
     @FXML
     private Button cancelButton;
 
@@ -30,8 +30,8 @@ public class DefineCourseController {
     private void onSave() {
         // Validate inputs
         if (courseCodeField.getText().trim().isEmpty() ||
-            courseNameField.getText().trim().isEmpty() ||
-            sectionNumberField.getText().trim().isEmpty()) {
+                courseNameField.getText().trim().isEmpty() ||
+                sectionNumberField.getText().trim().isEmpty()) {
             showAlert("Please fill in all fields");
             return;
         }
@@ -44,8 +44,8 @@ public class DefineCourseController {
         List<Course> existingCourses = DataManager.loadAllCourses();
         for (Course existingCourse : existingCourses) {
             if (existingCourse.getCourseCode().equalsIgnoreCase(courseCode) &&
-                existingCourse.getCourseName().equalsIgnoreCase(courseName) &&
-                existingCourse.getSectionNumber().equalsIgnoreCase(sectionNumber)) {
+                    existingCourse.getCourseName().equalsIgnoreCase(courseName) &&
+                    existingCourse.getSectionNumber().equalsIgnoreCase(sectionNumber)) {
                 showAlert("Error: This course already exists!");
                 return;
             }
@@ -90,4 +90,4 @@ public class DefineCourseController {
         alert.setContentText(message);
         alert.showAndWait();
     }
-} 
+}
