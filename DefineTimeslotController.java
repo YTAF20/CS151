@@ -1,4 +1,4 @@
-package s25.cs151.application;
+package s25.cs151.application.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -10,6 +10,7 @@ import java.io.IOException;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Modality;
+import s25.cs151.application.model.*;
 
 public class DefineTimeslotController {
     @FXML

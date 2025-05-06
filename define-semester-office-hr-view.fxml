@@ -8,7 +8,7 @@
 
 <!-- Main container: Vertical box with 10px spacing between elements -->
 <VBox spacing="10" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="s25.cs151.application.DefineOfficeHrController">    <!-- Links to the controller class -->
+      fx:controller="s25.cs151.application.controller.DefineOfficeHrController">    <!-- Links to the controller class -->
 
     <!-- Sets 20px padding on all sides of the form -->
     <padding>

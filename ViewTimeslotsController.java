@@ -1,4 +1,4 @@
-package s25.cs151.application;
+package s25.cs151.application.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -8,6 +8,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.beans.property.SimpleStringProperty;
 import java.util.Comparator;
+import s25.cs151.application.model.*;
 
 public class ViewTimeslotsController {
     @FXML

@@ -1,4 +1,4 @@
-package s25.cs151.application;
+package s25.cs151.application.controller;
 
 // Import necessary JavaFX libraries for UI components
 import javafx.fxml.FXML;
@@ -11,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
 import java.io.IOException;
+import s25.cs151.application.model.*;
 
 // Controller class for defining office hours interface
 public class DefineOfficeHrController {

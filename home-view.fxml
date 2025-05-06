@@ -11,7 +11,7 @@
      - spacing="20.0" adds 20px space between elements
      - fx:controller specifies the Java controller class -->
 <VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="s25.cs151.application.MainController">
+      fx:controller="s25.cs151.application.controller.MainController">
     
     <!-- Padding configuration for the VBox:
          Sets 50px padding on all sides (top, right, bottom, left) -->

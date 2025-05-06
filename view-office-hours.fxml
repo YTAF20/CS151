@@ -7,7 +7,7 @@
 
 <!-- Root container with spacing between elements -->
 <VBox spacing="10" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="s25.cs151.application.ViewOfficeHoursController">
+      fx:controller="s25.cs151.application.controller.ViewOfficeHoursController">
       
       <!-- Padding around the VBox to ensure proper spacing -->
     <padding>

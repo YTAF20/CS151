@@ -5,7 +5,7 @@
 <?import javafx.geometry.Insets?>
 
 <VBox spacing="15" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="s25.cs151.application.ScheduleEntryController">
+      fx:controller="s25.cs151.application.controller.ScheduleEntryController">
     
     <padding>
         <Insets top="20" right="20" bottom="20" left="20"/>

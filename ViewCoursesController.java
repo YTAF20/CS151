@@ -1,4 +1,4 @@
-package s25.cs151.application;
+package s25.cs151.application.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -6,6 +6,7 @@ import javafx.stage.Stage;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.cell.PropertyValueFactory;
+import s25.cs151.application.model.*;
 
 public class ViewCoursesController {
     @FXML
