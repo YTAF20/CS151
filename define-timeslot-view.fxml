@@ -7,7 +7,7 @@
 
 <VBox spacing="10" xmlns:fx="http://javafx.com/fxml"
       fx:controller="s25.cs151.application.controller.DefineTimeslotController">
-    
+
     <padding>
         <Insets top="20" right="20" bottom="20" left="20"/>
     </padding>
@@ -31,11 +31,11 @@
     <!-- View and Action Buttons -->
     <VBox spacing="10">
         <Button text="View All Timeslots" onAction="#onViewTimeslots"/>
-        
+
         <HBox spacing="10" alignment="CENTER">
             <Button fx:id="saveButton" text="Save" onAction="#onSave"/>
             <Button fx:id="cancelButton" text="Cancel" onAction="#onCancel"/>
         </HBox>
     </VBox>
 
-</VBox> 
+</VBox>

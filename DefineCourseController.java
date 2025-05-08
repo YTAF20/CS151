@@ -7,6 +7,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
+import s25.cs151.application.model.DataManager;
+
 import java.io.IOException;
 import java.util.List;
 import s25.cs151.application.model.*;
@@ -71,7 +73,7 @@ public class DefineCourseController {
     @FXML
     private void onViewCourses() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("view-courses.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/s25/cs151/application/view/view-courses.fxml"));
             Parent root = loader.load();
 
             Stage viewStage = new Stage();

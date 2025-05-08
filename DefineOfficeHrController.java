@@ -10,8 +10,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
+import s25.cs151.application.model.DataManager;
+import s25.cs151.application.model.SemesterOfficeHours;
+
 import java.io.IOException;
-import s25.cs151.application.model.*;
 
 // Controller class for defining office hours interface
 public class DefineOfficeHrController {
@@ -93,7 +95,7 @@ public class DefineOfficeHrController {
     private void onViewButtonClick() {
         try {
             // Load the view office hours FXML
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("view-office-hours.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/s25/cs151/application/view/view-office-hours.fxml"));
             Parent root = loader.load();
 
             // Create new stage for the view

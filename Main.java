@@ -5,8 +5,6 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import s25.cs151.application.controller.MainController;
-import java.io.File;
 
 // Main class that serves as the entry point for the JavaFX application
 // Extends Application to use JavaFX functionality
@@ -16,12 +14,13 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         // Create a new FXMLLoader to load the UI layout from the FXML file
-        FXMLLoader fxmlLoader = new FXMLLoader(new File("home-view.fxml").toURI().toURL());
-        
+        // getResource finds the FXML file in the same package as this class
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/s25/cs151/application/view/home-view.fxml"));
+
         // Create a new Scene with the loaded FXML content
         // Sets the initial window size to 400x350 pixels
         Scene scene = new Scene(fxmlLoader.load(), 400, 350);
-        
+
         // Configure the primary stage (window)
         stage.setTitle("Define Semester's Office Hours");  // Set window title
         stage.setScene(scene);                            // Set the scene content

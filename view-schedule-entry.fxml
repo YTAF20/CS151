@@ -6,7 +6,7 @@
 
 <VBox spacing="15" xmlns:fx="http://javafx.com/fxml"
       fx:controller="s25.cs151.application.controller.ScheduleEntryController">
-    
+
     <padding>
         <Insets top="20" right="20" bottom="20" left="20"/>
     </padding>
@@ -28,20 +28,14 @@
 
     <!-- Time Slot -->
     <VBox spacing="5">
-        <Label text="Time Slot (dropdown list, single select, required, default value = the first item of the list)"/>
+        <Label text="Time Slot (dropdown list, single select, required)"/>
         <ComboBox fx:id="timeSlotComboBox" promptText="Example: 4:30 - 4:45"/>
-        <Label text="Picked from semester's time slots defined in 2.1.1.2" 
-               style="-fx-font-size: 11; -fx-text-fill: #666666;"/>
     </VBox>
 
     <!-- Course -->
     <VBox spacing="5">
-        <Label text="Course (dropdown list, single select, required, default value = the first item of the list)"/>
+        <Label text="Course (dropdown list, single select, required)"/>
         <ComboBox fx:id="courseComboBox" promptText="Example: CS151-04"/>
-        <Label text="Picked from courses defined in 2.1.1.3" 
-               style="-fx-font-size: 11; -fx-text-fill: #666666;"/>
-        <Label text="Example: CS151-04 (course name is not required in this dropdown)" 
-               style="-fx-font-size: 11; -fx-text-fill: #666666;"/>
     </VBox>
 
     <!-- Reason -->
@@ -56,20 +50,13 @@
         <TextArea fx:id="commentField" prefRowCount="3"/>
     </VBox>
 
-    <!-- Information Notes -->
-    <VBox spacing="5" style="-fx-font-size: 11; -fx-text-fill: #666666;">
-        <Label text="This information shall be saved to be used on other pages." />
-        <Label text="Duplication checking is not required." />
-    </VBox>
-
     <!-- View Entries Button -->
     <Button text="View Schedule Entries" onAction="#onViewEntries"/>
 
     <!-- Buttons -->
     <HBox spacing="10" alignment="CENTER_RIGHT">
         <Button fx:id="cancelButton" text="Cancel" onAction="#onCancel"/>
-        <Button fx:id="saveButton" text="Save" onAction="#onSave" 
-                style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+        <Button fx:id="saveButton" text="Save" onAction="#onSave"/>
     </HBox>
 
-</VBox> 
+</VBox>

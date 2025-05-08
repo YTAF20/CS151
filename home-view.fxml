@@ -12,7 +12,7 @@
      - fx:controller specifies the Java controller class -->
 <VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
       fx:controller="s25.cs151.application.controller.MainController">
-    
+
     <!-- Padding configuration for the VBox:
          Sets 50px padding on all sides (top, right, bottom, left) -->
     <padding>
@@ -21,7 +21,7 @@
 
     <!-- Label element with fx:id for reference in the controller -->
     <Label fx:id="welcomeText" text="Office Hours Management System"/>
-    
+
     <!-- Button element with:
          - Display text
          - onAction event handler that calls MainController.onButtonClick() -->

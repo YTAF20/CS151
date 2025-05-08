@@ -10,11 +10,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.Comparator;
 import java.util.List;
 import java.util.ArrayList;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.TableCell;
-import javafx.stage.Modality;
+
+import s25.cs151.application.model.DataManager;
+import s25.cs151.application.model.ScheduleEntry;
 import s25.cs151.application.model.*;
 
 public class ViewScheduleEntriesController {

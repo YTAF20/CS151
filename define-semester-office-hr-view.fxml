@@ -26,11 +26,11 @@
     <!-- Weekday selection section -->
     <Label text="Office Days:"/>    <!-- Label for office days section -->
     <VBox spacing="5">    <!-- Vertical container for checkboxes with 5px spacing -->
-        <CheckBox fx:id="mondayCheck" text="Monday"/>         
-        <CheckBox fx:id="tuesdayCheck" text="Tuesday"/>       
-        <CheckBox fx:id="wednesdayCheck" text="Wednesday"/>   
-        <CheckBox fx:id="thursdayCheck" text="Thursday"/>     
-        <CheckBox fx:id="fridayCheck" text="Friday"/>         
+        <CheckBox fx:id="mondayCheck" text="Monday"/>
+        <CheckBox fx:id="tuesdayCheck" text="Tuesday"/>
+        <CheckBox fx:id="wednesdayCheck" text="Wednesday"/>
+        <CheckBox fx:id="thursdayCheck" text="Thursday"/>
+        <CheckBox fx:id="fridayCheck" text="Friday"/>
     </VBox>
 
     <!-- View Office Hours button -->

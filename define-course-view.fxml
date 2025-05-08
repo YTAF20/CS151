@@ -7,7 +7,7 @@
 
 <VBox spacing="10" xmlns:fx="http://javafx.com/fxml"
       fx:controller="s25.cs151.application.controller.DefineCourseController">
-    
+
     <padding>
         <Insets top="20" right="20" bottom="20" left="20"/>
     </padding>
@@ -32,4 +32,4 @@
         <Button fx:id="saveButton" text="Save" onAction="#onSave"/>
         <Button fx:id="cancelButton" text="Cancel" onAction="#onCancel"/>
     </HBox>
-</VBox> 
+</VBox>

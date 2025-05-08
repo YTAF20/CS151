@@ -12,6 +12,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
+import s25.cs151.application.model.DataManager;
+import s25.cs151.application.model.OfficeHoursSchedule;
+import s25.cs151.application.model.ScheduleEntry;
+import s25.cs151.application.model.Timeslot;
 import s25.cs151.application.model.*;
 
 public class ScheduleEntryController {
@@ -199,7 +203,7 @@ public class ScheduleEntryController {
     @FXML
     private void onViewEntries() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("view-schedule-entries.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/s25/cs151/application/view/view-schedule-entries.fxml"));
             Parent root = loader.load();
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);

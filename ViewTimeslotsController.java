@@ -5,9 +5,9 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.beans.property.SimpleStringProperty;
-import java.util.Comparator;
+import s25.cs151.application.model.DataManager;
+import s25.cs151.application.model.Timeslot;
 import s25.cs151.application.model.*;
 
 public class ViewTimeslotsController {

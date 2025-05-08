@@ -9,9 +9,6 @@ import javafx.stage.Stage;
 import javafx.stage.Modality;
 
 import java.io.IOException;
-import java.io.File;
-
-import s25.cs151.application.model.*;
 
 // Controller class that handles the home view functionality
 public class MainController {
@@ -24,7 +21,7 @@ public class MainController {
     protected void onButtonClick() {
         try {
             // Create a new FXML loader and load the office hours definition view
-            FXMLLoader loader = new FXMLLoader(new File("define-semester-office-hr-view.fxml").toURI().toURL());
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/s25/cs151/application/view/define-semester-office-hr-view.fxml"));
             Parent root = loader.load();
 
             // Create a new stage (window) for the form
@@ -43,7 +40,7 @@ public class MainController {
     protected void onViewButtonClick() {
         try {
             // Load the view office hours FXML
-            FXMLLoader loader = new FXMLLoader(new File("view-office-hours.fxml").toURI().toURL());
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/s25/cs151/application/view/view-office-hours.fxml"));
             Parent root = loader.load();
 
             // Create new stage for the view
@@ -61,7 +58,7 @@ public class MainController {
     protected void onTimeslotButtonClick() {
         try {
             // Load the timeslot definition view
-            FXMLLoader loader = new FXMLLoader(new File("define-timeslot-view.fxml").toURI().toURL());
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/s25/cs151/application/view/define-timeslot-view.fxml"));
             Parent root = loader.load();
 
             // Create new stage for the form
@@ -79,7 +76,7 @@ public class MainController {
     protected void onDefineCourseClick() {
         try {
             // Load the course definition view
-            FXMLLoader loader = new FXMLLoader(new File("define-course-view.fxml").toURI().toURL());
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/s25/cs151/application/view/define-course-view.fxml"));
             Parent root = loader.load();
 
             // Create new stage for the form
@@ -97,7 +94,7 @@ public class MainController {
     @FXML
     protected void onScheduleEntryClick() {
         try {
-            FXMLLoader loader = new FXMLLoader(new File("view-schedule-entry.fxml").toURI().toURL());
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/s25/cs151/application/view/view-schedule-entry.fxml"));
             Parent root = loader.load();
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
@@ -112,7 +109,7 @@ public class MainController {
     @FXML
     protected void onViewScheduleEntriesClick() {
         try {
-            FXMLLoader loader = new FXMLLoader(new File("view-schedule-entries.fxml").toURI().toURL());
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/s25/cs151/application/view/view-schedule-entries.fxml"));
             Parent root = loader.load();
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
@@ -127,7 +124,7 @@ public class MainController {
     @FXML
     protected void onEditOfficeHoursClick() {
         try {
-            FXMLLoader loader = new FXMLLoader(new File("edit-office-hours-schedule.fxml").toURI().toURL());
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/s25/cs151/application/view/edit-office-hours-schedule.fxml"));
             Parent root = loader.load();
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);

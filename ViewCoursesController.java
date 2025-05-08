@@ -6,6 +6,7 @@ import javafx.stage.Stage;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.cell.PropertyValueFactory;
+import s25.cs151.application.model.DataManager;
 import s25.cs151.application.model.*;
 
 public class ViewCoursesController {

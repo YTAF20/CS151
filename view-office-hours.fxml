@@ -8,8 +8,8 @@
 <!-- Root container with spacing between elements -->
 <VBox spacing="10" xmlns:fx="http://javafx.com/fxml"
       fx:controller="s25.cs151.application.controller.ViewOfficeHoursController">
-      
-      <!-- Padding around the VBox to ensure proper spacing -->
+
+    <!-- Padding around the VBox to ensure proper spacing -->
     <padding>
         <Insets top="20" right="20" bottom="20" left="20"/>
     </padding>
@@ -23,12 +23,9 @@
         </columns>
     </TableView>
 
-    <!-- Close button to exit the view -->
-    <Button fx:id="closeButton" text="Close" onAction="#onClose"/>
-
     <!-- Add HBox for buttons -->
     <HBox spacing="10">
-        <Button fx:id="clearButton" text="Clear All" onAction="#onClear" style="-fx-background-color: #ff4444;"/>
+        <Button fx:id="clearButton" text="Clear All" onAction="#onClear" style="-fx-background-color: #ff4444; -fx-text-fill: white;"/>
         <Button fx:id="closeButton" text="Close" onAction="#onClose"/>
     </HBox>
-</VBox> 
+</VBox>

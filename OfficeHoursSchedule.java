@@ -1,6 +1,5 @@
 package s25.cs151.application.model;
 
-import java.io.Serializable;
 import java.time.LocalDate;
 
 public class OfficeHoursSchedule extends ScheduleEntry {

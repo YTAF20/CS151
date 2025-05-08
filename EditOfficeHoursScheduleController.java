@@ -7,14 +7,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.cell.PropertyValueFactory;
 import java.time.format.DateTimeFormatter;
-import java.util.Comparator;
 import java.util.List;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TableCell;
 import javafx.stage.Modality;
-import s25.cs151.application.model.*;
+import s25.cs151.application.model.DataManager;
+import s25.cs151.application.model.ScheduleEntry;
 
 public class EditOfficeHoursScheduleController {
     @FXML
@@ -109,7 +108,7 @@ public class EditOfficeHoursScheduleController {
 
     private void openEditDialog(ScheduleEntry entry) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("view-schedule-entry.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/s25/cs151/application/view/view-schedule-entry.fxml"));
             Parent root = loader.load();
             ScheduleEntryController controller = loader.getController();
             controller.setEditingEntry(entry, null); // No parent refresh needed

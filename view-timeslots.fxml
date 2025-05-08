@@ -7,7 +7,7 @@
 
 <VBox spacing="10" xmlns:fx="http://javafx.com/fxml"
       fx:controller="s25.cs151.application.controller.ViewTimeslotsController">
-    
+
     <padding>
         <Insets top="20" right="20" bottom="20" left="20"/>
     </padding>
@@ -25,10 +25,10 @@
 
     <!-- Buttons -->
     <HBox spacing="10" alignment="CENTER_RIGHT">
-        <Button fx:id="clearButton" text="Clear All" 
-                onAction="#onClear" 
+        <Button fx:id="clearButton" text="Clear All"
+                onAction="#onClear"
                 style="-fx-background-color: #ff4444; -fx-text-fill: white;"/>
         <Button fx:id="closeButton" text="Close" onAction="#onClose"/>
     </HBox>
 
-</VBox> 
+</VBox>
